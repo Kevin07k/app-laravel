@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        //una persona pertenece a una persona de usario
+        return $this->belongsTo(User::class);
+    }
 }

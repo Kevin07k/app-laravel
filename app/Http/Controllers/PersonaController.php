@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Persona;
 
@@ -9,8 +10,8 @@ class PersonaController extends Controller
 {
     public function funListar(){
         $personas = Persona::get(); // select * from personas
-
-        return view("admin.persona.listar", ["personas" => $personas]);
+        $usuarios = User::get();
+        return view("admin.persona.listar", ["personas" => $personas,"usuarios" => $usuarios]);
     }
 
     public function funCrear(){
@@ -54,6 +55,12 @@ class PersonaController extends Controller
         $persona = Persona::find($id);
         $persona->delete();
 
+        return redirect("/persona");
+    }
+    public function asignarPersona($id,Request $request){
+        $persona = Persona::find($id);
+        $persona->user_id = $request->user_id;
+        $persona->update();
         return redirect("/persona");
     }
 }

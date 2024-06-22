@@ -7,7 +7,8 @@ use \App\Http\Controllers\UsuarioController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//
+Route::post("/persona/{id}/asignar",[PersonaController::class,'asignarPersona']);
 
 // CRUD PERSONA
 // listar (GET)
