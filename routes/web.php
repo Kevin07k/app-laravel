@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PersonaController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UsuarioController;
@@ -29,3 +30,6 @@ Route::delete("/persona/{id}", [PersonaController::class, "funEliminar"]);
 
 // CRUD Usuarios
 Route::resource("/usuario", UsuarioController::class);
+
+//CRUD Para categoria
+Route::resource("/categoria", CategoriaController::class);
